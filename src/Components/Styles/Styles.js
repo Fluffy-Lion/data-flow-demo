@@ -8,10 +8,10 @@ const backgroundAnimation = keyframes`
 export const Box = styled.div`
   border: solid 1px black;
   height: 150px;
-  width: 400px;
+  width: 80%;
   margin: 20px;
   background: ${(props) =>
-    props.prop
+    props.givenProp
       ? "linear-gradient(-45deg, #65f4cd, #4799e9)"
       : "linear-gradient(-45deg, #f94144, #f8961e)"};
   background-size: 400% 400%;
@@ -21,14 +21,32 @@ export const Box = styled.div`
 export const CodeSnip = styled.div `
     border: solid 2px pink;
     height: 50px;
-    width: 300px;
+    width: 100%;
     background-color: ${props => props.col};
     margin: 10px;
 `
-
-export const Cont = styled.div `
-    border: solid blue 2px;
+export const Container = styled.div `
     display: flex;
-    justify-content: center;
-    background-color: 
+`
+export const ContentStyles = styled.div `
+    border: solid blue 2px;
+    color: grey;
+    height: 100%;
+`
+export const ColumnContainer = styled.div `
+    margin: 8px;
+    border: 1px solid black;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+`
+export const ColumnTitle = styled.h1 `
+    padding: 8px;
+    color: red;
+`
+export const BoxListStyle = styled.div`
+    border: black 2px solid;
+    min-height: 100%;
+    background-color: azure;
+
 `
