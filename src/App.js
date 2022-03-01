@@ -3,6 +3,8 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import CodeBox from "./Components/CodeBox";
 import { useState } from "react";
 import { initialInfo } from "./Components/initialInfo";
+
+
 import Column from "./Components/Column";
 
 const App = () => {
@@ -10,6 +12,8 @@ const App = () => {
   const [info, setInfo]  = useState("")
 
   const [data, setData] = useState(initialInfo)
+  const [colOne, setColOne] = useState("")
+  const [colTwo, setColTwo] = useState("")
   const onDragEnd = (result) => {
      const { destination, source, draggableId} = result
      if(!destination){
@@ -21,6 +25,7 @@ const App = () => {
      ) {
        return
      }
+     //change to boxes
      const start = data.columns[source.droppableId]
      const finish = data.columns[destination.droppableId]
 
@@ -42,6 +47,7 @@ const App = () => {
         }
       }
       setData(newData)
+      return
      }
 
      const startItemIds = Array.from(start.itemIds)
@@ -67,8 +73,8 @@ const App = () => {
       },
     }
     setData(newData)
-     
   }
+
   return (
     <DragDropContext
       onDragEnd={onDragEnd}
@@ -76,11 +82,11 @@ const App = () => {
       <Container>
       {data.columnOrder.map((columnId) => {
         const column = data.columns[columnId]
-        
-        const items = column.itemIds.map(itemId => data.boxes[itemId])
-        // NEED TO SPLIT BETWEEN CODE SNIPPETS AND BOXEs
-        // return <Column key={column.id} column={column} items={items} />
+        const boxes = column.itemIds.map(itemId => data.boxes[itemId])
+        return <Column key={column.id} column={column} items={boxes} />
       })}
+
+      
       </Container>
   </DragDropContext>
   )}

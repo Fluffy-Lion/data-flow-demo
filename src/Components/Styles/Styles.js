@@ -11,7 +11,10 @@ export const Box = styled.div`
   width: 80%;
   margin: 20px;
   background: ${(props) =>
-    props.givenProp
+    props.column === "column-2" 
+    ? "white"
+    :
+    props.correct
       ? "linear-gradient(-45deg, #65f4cd, #4799e9)"
       : "linear-gradient(-45deg, #f94144, #f8961e)"};
   background-size: 400% 400%;
